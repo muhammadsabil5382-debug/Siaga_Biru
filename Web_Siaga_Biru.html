@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAGA BIRU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // SCRIPT PELACAK OTOMATIS (Akan otomatis memperbaiki file .jpeg menjadi .jpg atau masalah spasi)
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                let img = e.target;
+                let originalSrc = img.getAttribute('data-original');
+                
+                // Simpan nama asli saat pertama kali gagal
+                if (!originalSrc) {
+                    originalSrc = img.getAttribute('src');
+                    img.setAttribute('data-original', originalSrc);
+                }
+                
+                let retry = parseInt(img.getAttribute('data-retry') || '0');
+                retry++;
+                img.setAttribute('data-retry', retry.toString());
+
+                // Mencoba 4 kemungkinan nama file yang sering error di Windows/Laptop
+                if (retry === 1) {
+                    img.src = originalSrc.replace('.jpeg', '.jpg'); // Percobaan 1: Ubah ke .jpg
+                } else if (retry === 2) {
+                    img.src = originalSrc.replace(' (', '('); // Percobaan 2: Hapus spasi sebelum kurung
+                } else if (retry === 3) {
+                    img.src = originalSrc.replace(' (', '(').replace('.jpeg', '.jpg'); // Percobaan 3: Hapus spasi dan ubah ke .jpg
+                } else if (retry === 4) {
+                    img.src = encodeURI(originalSrc); // Percobaan 4: Format URL Encoding
+                }
+            }
+        }, true);
+
+        // Konfigurasi Warna
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 800: '#1e293b', 900: '#0f172a' },
+                        neonBlue: '#00f3ff', neonOrange: '#ff8800'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-glow-blue { text-shadow: 0 0 10px rgba(0,243,255,0.8); }
+        .text-glow-orange { text-shadow: 0 0 10px rgba(255,136,0,0.8); }
+        .img-hover-zoom { overflow: hidden; }
+        .img-hover-zoom img { transition: transform 0.7s ease; }
+        .img-hover-zoom:hover img { transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-navy-900 text-slate-200 font-sans selection:bg-neonBlue selection:text-navy-900">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- LOGO -->
+                <img src="WhatsApp Image 2026-03-18 at 18.03.56.jpeg" alt="Logo Siaga Biru" class="w-12 h-12 object-contain rounded-full shadow-[0_0_10px_rgba(0,243,255,0.6)] border border-neonBlue bg-navy-800">
+                <div class="font-serif font-bold text-xl md:text-2xl tracking-widest">
+                    <span class="text-neonOrange text-glow-orange">SIAGA</span> 
+                    <span class="text-neonBlue text-glow-blue">BIRU</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-6 font-medium text-sm tracking-wider">
+                <a href="#profil" class="hover:text-neonBlue transition-colors">PROFIL</a>
+                <a href="#armada" class="hover:text-neonOrange transition-colors">ARMADA</a>
+                <a href="#posko" class="hover:text-neonBlue transition-colors">POSKO</a>
+                <a href="#dokumentasi" class="hover:text-neonOrange transition-colors">DOKUMENTASI</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative w-full h-screen min-h-[600px] flex items-center justify-center pt-16">
+        <div class="absolute inset-0 z-0 bg-navy-900">
+            <!-- FOTO HERO / BERSAMA -->
+            <img src="WhatsApp Image 2026-03-14 at 15.56.05.jpeg" alt="Foto Bersama" class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
+            <div class="absolute inset-0 bg-gradient-to-b from-navy-900/80 via-transparent to-navy-900"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold font-serif mb-4 tracking-tight">
+                KESATUAN <span class="text-neonBlue text-glow-blue block md:inline mt-2 md:mt-0">SIAGA BIRU</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Dedikasi, Solidaritas, dan Kesiapsiagaan Tanpa Batas untuk Melayani Masyarakat.</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-neonOrange to-neonBlue mx-auto rounded-full"></div>
+        </div>
+    </header>
+
+    <!-- PENGURUS -->
+    <section id="profil" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2"><span class="text-neonOrange">KOMANDO</span> PUSAT</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24">
+            <!-- KETUA -->
+            <div class="text-center group flex flex-col items-center">
+                <div class="relative img-hover-zoom rounded-full w-40 h-40 md:w-48 md:h-48 mb-6 bg-navy-800 flex items-center justify-center shadow-[0_0_25px_rgba(0,243,255,0.4)] border-2 border-neonBlue">
+                    <img src="WhatsApp Image 2026-03-14 at 16.02.56 (3).jpeg" alt="Ketua" class="w-full h-full object-cover rounded-full">
+                </div>
+                <h3 class="font-bold text-2xl text-white mb-1">Siaga Biru 1</h3>
+                <p class="text-neonOrange text-sm font-semibold tracking-widest">KETUA UMUM</p>
+            </div>
+
+            <!-- SERAGAM -->
+            <div class="relative w-64 h-80 md:w-72 md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 img-hover-zoom">
+                <img src="WhatsApp Image 2026-03-18 at 18.03.56 (3).jpeg" alt="Seragam" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 inset-x-0 bg-navy-900/80 p-4 text-center">
+                    <p class="text-neonBlue font-semibold text-sm">SERAGAM KESATUAN</p>
+                </div>
+            </div>
+
+            <!-- WAKIL -->
+            <div class="text-center group flex flex-col items-center">
+                <div class="relative img-hover-zoom rounded-full w-40 h-40 md:w-48 md:h-48 mb-6 bg-navy-800 flex items-center justify-center shadow-[0_0_25px_rgba(255,136,0,0.4)] border-2 border-neonOrange">
+                    <img src="WhatsApp Image 2026-03-14 at 16.02.56 (2).jpeg" alt="Wakil" class="w-full h-full object-cover rounded-full">
+                </div>
+                <h3 class="font-bold text-2xl text-white mb-1">Siaga Biru 2</h3>
+                <p class="text-neonBlue text-sm font-semibold tracking-widest">WAKIL KETUA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARMADA (DIUBAH JADI GRID AGAR SEMUA TAMPIL TANPA PERLU DIGESER) -->
+    <section id="armada" class="py-20 bg-navy-800/50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2"><span class="text-neonBlue">ARMADA</span> UNIT</h2>
+                <p class="text-slate-400">Seluruh unit operasional kami siap bertugas</p>
+            </div>
+            
+            <!-- GRID LAYOUT: Tampil bersusun dengan rapi -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Unit 1 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.06.jpeg" alt="Unit 1" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonBlue/30 text-center"><span class="text-neonBlue font-bold text-sm tracking-widest">UNIT 01</span></div>
+                </div>
+                <!-- Unit 2 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.06 (1).jpeg" alt="Unit 2" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonOrange/30 text-center"><span class="text-neonOrange font-bold text-sm tracking-widest">UNIT 02</span></div>
+                </div>
+                <!-- Unit 3 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.06 (2).jpeg" alt="Unit 3" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonBlue/30 text-center"><span class="text-neonBlue font-bold text-sm tracking-widest">UNIT 03</span></div>
+                </div>
+                <!-- Unit 4 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.06 (3).jpeg" alt="Unit 4" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonOrange/30 text-center"><span class="text-neonOrange font-bold text-sm tracking-widest">UNIT 04</span></div>
+                </div>
+                <!-- Unit 5 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.07 (2).jpeg" alt="Unit 5" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonBlue/30 text-center"><span class="text-neonBlue font-bold text-sm tracking-widest">UNIT 05</span></div>
+                </div>
+                <!-- Unit 6 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <!-- FOTO UNIT 6 YG BENAR -->
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.07.jpeg" alt="Unit 6" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonOrange/30 text-center"><span class="text-neonOrange font-bold text-sm tracking-widest">UNIT 06</span></div>
+                </div>
+                <!-- Unit 7 -->
+                <div class="relative rounded-xl overflow-hidden border border-white/10 h-56 img-hover-zoom shadow-lg">
+                    <!-- FOTO UNIT 7 YG BENAR -->
+                    <img src="WhatsApp Image 2026-03-14 at 15.56.07 (1).jpeg" alt="Unit 7" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-navy-900/90 p-2 border-t border-neonBlue/30 text-center"><span class="text-neonBlue font-bold text-sm tracking-widest">UNIT 07</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSKO -->
+    <section id="posko" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden border border-white/10 img-hover-zoom shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                <img src="WhatsApp Image 2026-03-20 at 13.17.01 (1).jpeg" alt="Posko Utama" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 p-6 bg-gradient-to-t from-navy-900 w-full"><h3 class="text-2xl font-bold">Posko Utama</h3></div>
+            </div>
+            <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden border border-white/10 img-hover-zoom shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                <img src="WhatsApp Image 2026-03-14 at 16.03.40 (2).jpeg" alt="Posko 2" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 p-6 bg-gradient-to-t from-navy-900 w-full"><h3 class="text-2xl font-bold">Posko Tambahan</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOKUMENTASI -->
+    <section id="dokumentasi" class="py-20 bg-navy-800/50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2"><span class="text-neonBlue">GALERI</span> LAPANGAN</h2>
+            </div>
+            <!-- MENGGUNAKAN 3 FOTO DOKUMENTASI YANG ASLI DAN BERFUNGSI -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="overflow-hidden rounded-lg img-hover-zoom shadow-lg"><img src="WhatsApp Image 2026-03-14 at 16.02.55 (2).jpeg" alt="Dokumentasi 1" class="aspect-square w-full object-cover border border-white/10"></div>
+                <div class="overflow-hidden rounded-lg img-hover-zoom shadow-lg"><img src="WhatsApp Image 2026-03-14 at 16.02.55 (1).jpeg" alt="Dokumentasi 2" class="aspect-square w-full object-cover border border-white/10"></div>
+                <div class="overflow-hidden rounded-lg img-hover-zoom shadow-lg"><img src="WhatsApp Image 2026-03-14 at 16.02.55.jpeg" alt="Dokumentasi 3" class="aspect-square w-full object-cover border border-white/10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 py-12 border-t border-white/10 text-center">
+        <!-- LOGO BAWAH -->
+        <img src="WhatsApp Image 2026-03-18 at 18.03.56.jpeg" alt="Logo Bawah" class="w-20 h-20 mx-auto rounded-full mb-4 border-2 border-neonBlue shadow-[0_0_15px_rgba(0,243,255,0.4)]">
+        <h2 class="text-2xl font-bold font-serif tracking-widest"><span class="text-neonOrange">SIAGA</span> <span class="text-neonBlue">BIRU</span></h2>
+        
+        <!-- LINK TIKTOK -->
+        <div class="mt-6 mb-8">
+            <a href="https://www.tiktok.com/@siagabirufire?_r=1&_t=ZS-94o5XJLdgzX" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-neonBlue/10 hover:border-neonBlue hover:text-neonBlue transition-all duration-300 shadow-[0_0_15px_rgba(0,243,255,0)] hover:shadow-[0_0_15px_rgba(0,243,255,0.4)] group">
+                <svg class="w-5 h-5 fill-current group-hover:text-neonBlue transition-colors" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a5.64 5.64 0 0 1-1.04-.1z"/>
+                </svg>
+                <span class="font-medium tracking-wide">@siagabirufire</span>
+            </a>
+        </div>
+
+        <p class="text-slate-500 mt-4 text-sm">&copy; 2026 Kesatuan Siaga Biru. Bersama Kita Kuat.</p>
+    </footer>
+
+</body>
+</html>
